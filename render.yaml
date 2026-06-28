@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: deborasaurus-rex-api
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: CORS_ORIGIN
+        value: https://your-vercel-site.vercel.app   # ← replace with your actual Vercel URL
+    disk:
+      name: db
+      mountPath: /data
+      sizeGB: 1
