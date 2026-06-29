@@ -222,3 +222,17 @@ def add_identity(data: IdentityVote):
     conn.commit()
     conn.close()
     return {"ok": True}
+
+@app.post("/admin/import-data")
+def import_data():
+    conn = get_db()
+    statements = [
+        """INSERT INTO guestbook (visitor_name, message, dino_emoji, created_at) VALUES ('Deborasaurus', 'It has begun 🦕', '🦕', '2026-06-01T11:46:47.093957')""",
+        """INSERT INTO guestbook (visitor_name, message, dino_emoji, created_at) VALUES ('Baby mo', 'Hi baby', '🦖', '2026-06-01T11:50:42.538645')""",
+        # ... paste all statements here
+    ]
+    for s in statements:
+        conn.execute(s)
+    conn.commit()
+    conn.close()
+    return {"ok": True, "imported": len(statements)}
