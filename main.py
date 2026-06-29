@@ -38,8 +38,7 @@ app.add_middleware(
 # ── Database ───────────────────────────────────────────────────────────────────
 # On Railway/Render the DB lives next to this file.
 # Set the DB_PATH env var if you want a different location.
-DB_PATH = os.environ.get("DB_PATH", os.path.join(os.path.dirname(__file__), "deborasaurus.db"))
-
+DB_PATH = os.environ.get("DB_PATH", "/data/deborasaurus.db")
 def get_db():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
