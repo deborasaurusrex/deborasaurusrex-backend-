@@ -29,8 +29,8 @@ CORS_ORIGIN = os.environ.get("CORS_ORIGIN", "*")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[CORS_ORIGIN] if CORS_ORIGIN != "*" else ["*"],
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
